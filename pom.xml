@@ -8,6 +8,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>auth-service</module>
         <module>person-service</module>
     </modules>
 </project>

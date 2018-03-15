@@ -6,6 +6,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,5 +33,14 @@ public class PersonService {
     public ResponseEntity<String> create(@RequestBody @Valid Person person, UriComponentsBuilder uriBuilder) {
         personRepository.create(person);
         return ResponseEntity.created(uriBuilder.pathSegment("person").path(person.getId()).build().toUri()).build();
+    }
+
+    @RequestMapping("/{person-id}")
+    public ResponseEntity<Person> get(@PathVariable("person-id") String personId) {
+        Person person = personRepository.get(personId);
+        if (person == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(person);
     }
 }

@@ -1,0 +1,21 @@
+version: '2'
+services:
+  person-service:
+    image: saikat047/person-service:1.0-SNAPSHOT
+    ports:
+      - 8080:9080
+
+  storage:
+    image: openzipkin/zipkin-mysql
+    container_name: mysql
+
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    environment:
+      - STORAGE_TYPE=mysql
+      - MYSQL_HOST=mysql
+    ports:
+      - 9411:9411
+    depends_on:
+      - storage

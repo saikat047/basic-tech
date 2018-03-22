@@ -10,5 +10,6 @@
     <modules>
         <module>auth-service</module>
         <module>person-service</module>
+        <module>person-service-client</module>
     </modules>
 </project>

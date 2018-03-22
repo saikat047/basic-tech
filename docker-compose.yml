@@ -3,7 +3,7 @@ services:
   person-service:
     image: saikat047/person-service:1.0-SNAPSHOT
     ports:
-      - 8080:9080
+      - 0.0.0.0:9080:8080
 
   storage:
     image: openzipkin/zipkin-mysql

@@ -7,12 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
 import org.springframework.web.client.RestTemplate;
 import org.test.fun.model.Person;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"org.test.fun.config"})
 public class PersonServiceClientApplication implements CommandLineRunner {
 
     public static void main(String argv[]) {
@@ -56,11 +55,5 @@ public class PersonServiceClientApplication implements CommandLineRunner {
         p.setFirstName(name);
         p.setLastName("Generated");
         return p;
-    }
-
-    @Bean
-    public static RestTemplate produceRestTemplate() {
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate;
     }
 }

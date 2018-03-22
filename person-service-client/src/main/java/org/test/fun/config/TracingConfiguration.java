@@ -1,22 +1,14 @@
 package org.test.fun.config;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-
 import brave.Tracing;
 import brave.http.HttpTracing;
 import brave.propagation.B3Propagation;
 import brave.propagation.CurrentTraceContext;
 import brave.propagation.ExtraFieldPropagation;
 import brave.spring.web.TracingClientHttpRequestInterceptor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.http.client.ClientHttpRequestInterceptor;
-import org.springframework.web.client.RestTemplate;
 import zipkin2.Span;
 import zipkin2.reporter.AsyncReporter;
 import zipkin2.reporter.Sender;
@@ -50,18 +42,5 @@ public class TracingConfiguration {
     @Bean
     HttpTracing httpTracing(Tracing tracing) {
         return HttpTracing.create(tracing);
-    }
-
-    @Autowired
-    RestTemplate restTemplate;
-    @Autowired
-    TracingClientHttpRequestInterceptor clientInterceptor;
-
-    @PostConstruct
-    public void init() {
-        List<ClientHttpRequestInterceptor> interceptors =
-                new ArrayList<>(restTemplate.getInterceptors());
-        interceptors.add(clientInterceptor);
-        restTemplate.setInterceptors(interceptors);
     }
 }

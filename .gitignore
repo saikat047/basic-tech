@@ -1,4 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
+*/*.iml
+**/*.*~
+**/*.log*
 .idea/*
 .idea/.name
 .idea/compiler.xml

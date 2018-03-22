@@ -1,11 +1,7 @@
 package org.test.fun;
 
 import java.io.Console;
-import java.io.Reader;
-import java.io.Writer;
-import java.lang.reflect.Type;
 import java.net.URI;
-import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,8 +9,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
-import org.springframework.http.converter.json.AbstractJsonHttpMessageConverter;
-import org.springframework.http.converter.json.JsonbHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 import org.test.fun.model.Person;
 
